@@ -2,15 +2,17 @@
 
 ### Used versions:
 
- spaCy version 3.1 (pip install spacy==3.1) + en_core_web_lg pipeline (python -m spacy download en_core_web_lg).
- numpy version 1.18.5 (pip install numpy==1.18.5).
- pandas version 1.0.5 (pip install pandas==1.0.5).
- matplotlib version 3.2.2 (pip install matplotlib==3.2.2).
- seaborn version 0.10.1 (pip install seaborn==0.10.1).
- scikitlearn version 0.23.1 (pip install scikit-learn==0.23.1).
+ spaCy version 3.1 (pip install spacy==3.1) + en_core_web_lg pipeline (python -m spacy download en_core_web_lg).  
+ numpy version 1.18.5 (pip install numpy==1.18.5).  
+ pandas version 1.0.5 (pip install pandas==1.0.5).  
+ matplotlib version 3.2.2 (pip install matplotlib==3.2.2).  
+ seaborn version 0.10.1 (pip install seaborn==0.10.1).  
+ scikitlearn version 0.23.1 (pip install scikit-learn==0.23.1).  
  
  ### Table 1: All entities with their label inside the transformed dataset.
-
+ 
+| Label | Entity             |
+|-------|--------------------|
 | 0     | None               |
 | 1     | P: Age             |
 | 2     | P: Sex             |
