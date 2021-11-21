@@ -36,9 +36,9 @@
 
 ## Replication instructions: 
 
-1. Clone the repository
-2. Open the command line in the repositories root directory and unzip the 'ebm_nlp_2_00.tar.gz' file so you get the ebm_nlp_2_00 folder in this same directory.
-3. Execute the prepare.sh script which prepares the data by running the following files (could take a couple minutes depending on your hardware):
+### 1. Clone the repository
+### 2. Open the command line in the repositories root directory and unzip the 'ebm_nlp_2_00.tar.gz' file so you get the ebm_nlp_2_00 folder in this same directory.
+### 3. Execute the prepare.sh script which prepares the data by running the following files (could take a couple minutes depending on your hardware):
   #### loaddata.py:  
   This file first loads all the .tokens files which hold the tokenized texts and all the .txt files which hold the full texts.
   The tokens and documents are stored in seperate arrays together with the document ID for each document. Now all the individual annotations are read into arrays. 
@@ -64,6 +64,6 @@
     Out of this format we can make instances of spaCy's 'Doc' objects. All these 'Doc' objects are stored in a DocBin object.
     This DocBin gets stored in the .spacy format and now we are ready to train our model.  
    
-4. Execute the model.sh script which trains and evaluates the model.
+### 4. Execute the model.sh script which trains and evaluates the model.
  The output can be seen in the file ....txt
   
