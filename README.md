@@ -1,6 +1,7 @@
 # Thesis PIO Extraction
 
-
+### Repository content
+In this repository you can find... TODO
 ### Used versions:
 
  spaCy version 3.1 (pip install spacy==3.1) + en_core_web_lg pipeline (python -m spacy download en_core_web_lg).  
@@ -53,7 +54,7 @@
     Next, we match the annotations with the corresponding texts and tokens using the document ID's we stored. 
     Lastly, we map the numerical labels to the entity names enumerated in table 1 so that the labels speak for themselves.
   
- #####  ner_pico.py   
+ #####  ner_pico.py: 
   After the previous steps the data is in the following format:  
     [('None', 'Effect'), ('None', 'of'), ('I: Drug', 'aspirin'), ('None', 'for'), ('O: Outcome', 'headaches')]  
     Where the left element of each tuple is the entity and the right element the token. We want to transform it into the following format:  
