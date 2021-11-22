@@ -65,5 +65,6 @@
     This DocBin gets stored in the .spacy format and now we are ready to train our model.  
    
 ### 4. Execute the model.sh script which trains and evaluates the model.
- The output can be seen in the file ....txt
+ For training the model, the hyperparameters described in the config.cfg file are used. The output can be seen in the file scores.txt.  
+ Running this script could take up to a couple hours. If you have a GPU available, you can add --gpu-id = 0 at the end of the spacy train command to speed it up considerably.
   
