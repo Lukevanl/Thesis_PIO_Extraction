@@ -34,7 +34,6 @@ def make_spacy_format(annotations, text, indices):
         entities = list()
         for i in range(len(tokens[j])):
             label = labels[j][i]
-           # print(word,label)
             if(label != "None"): #Check if there is a label
                 entities.append((int(indices[j][index_count][0]), int(indices[j][index_count][1]), label))
                 index_count += 1
@@ -47,10 +46,10 @@ def make_spacy_format(annotations, text, indices):
     return spacy_form
 
 def save_spacy_format(spacy_form, is_train, is_dev, is_hier):
-    nlp = spacy.blank("en") # load a new spacy model
-    db = DocBin() # create a DocBin object
+    nlp = spacy.blank("en") # load blank spacy model
+    db = DocBin()
+    print("Converting to spaCy 3 format...")
     for text, annot in tqdm(spacy_form):
-        #print(annot)# data in previous format
         doc = nlp.make_doc(str(text)) # create doc object from text
         ents = []
         for start, end, label in annot["entities"]: # add character indexes
@@ -63,13 +62,13 @@ def save_spacy_format(spacy_form, is_train, is_dev, is_hier):
         db.add(doc)
     if(is_hier):
         if(is_train):
-            db.to_disk("./spacy_eff/trainhier.spacy")
+      #      db.to_disk("./spacy_eff/trainhier.spacy")
             db.to_disk("./spacy_acc/trainhier.spacy")
         elif(is_dev):
-            db.to_disk("./spacy_eff/devhier.spacy")
+     #       db.to_disk("./spacy_eff/devhier.spacy")
             db.to_disk("./spacy_acc/devhier.spacy")
         else:
-            db.to_disk("./spacy_eff/testhier.spacy")
+     #       db.to_disk("./spacy_eff/testhier.spacy")
             db.to_disk("./spacy_acc/testhier.spacy")
     else:
          if(is_train):
@@ -82,14 +81,10 @@ def save_spacy_format(spacy_form, is_train, is_dev, is_hier):
             db.to_disk("./spacy_eff/test.spacy")
             db.to_disk("./spacy_acc/test.spacy")
  
-def shuffle_three_arrays(a, b, c):
-    perm = np.random.permutation(len(a))
-    return a[perm], b[perm], c[perm]
     
 def main():    
     data_train, texts_train, indices_train, data_test, texts_test, indices_test  = load_data()
     #data_train, data_dev, texts_train, texts_dev, indices_train, indices_dev = train_test_split(data_train, texts_train, indices_train, test_size=0.10, random_state=10) 
-  #  data_train, texts_train, indices_train = shuffle_three_arrays(data_train, texts_train, indices_train)
     dev_indx = int(0.10*len(data_train))
     data_train, data_dev, texts_train, texts_dev, indices_train, indices_dev = data_train[dev_indx:], data_train[:dev_indx], texts_train[dev_indx:], texts_train[:dev_indx], indices_train[dev_indx:], indices_train[:dev_indx]
     file_names = [i[0] for i in texts_dev]
@@ -110,3 +105,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    print("Done")

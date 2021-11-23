@@ -8,8 +8,8 @@ Created on Wed Sep 15 09:44:15 2021
 import os
 import numpy as np
 
-DOC_DIR = './documents/'
-PATH = 'annotations/aggregated/hierarchical_labels'
+DOC_DIR = './ebm_nlp_2_00/documents/'
+PATH = './ebm_nlp_2_00/annotations/aggregated/hierarchical_labels'
 INTV_PATH = PATH + '/interventions'
 OUTC_PATH = PATH + '/outcomes'
 PART_PATH = PATH + '/participants' 
@@ -114,4 +114,6 @@ def save_files():
         np.save(file, tokens) #Save tokens
     
 if __name__ == '__main__':
+    print("Loading data...")
     save_files()
+    print("Done with loading")

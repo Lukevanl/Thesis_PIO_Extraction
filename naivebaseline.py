@@ -34,7 +34,6 @@ def get_counts(tokens, label_to_target):
         for token in doc:
             entity = token[0]
             counts[label_to_target[entity]] += 1
-    print(counts)
     return counts
             
 
@@ -43,7 +42,7 @@ def naive_baseline():
    # get_counts()
     #precision, recall, f1_score = get_scores(data_test)
     precision, recall, f1_score = get_scores(data_test)
-    print("Precision:" + str(precision) + " Recall: " + str(recall) + "F1-score: " + str(f1_score))
+    print("Precision:" + str(precision) + "\nRecall: " + str(recall) + "\nF1-score: " + str(f1_score))
             
     
 naive_baseline()

@@ -134,7 +134,7 @@ def load_all_data():
 
 
 if __name__ == '__main__':
+    print("Transforming data...")
     data_structured_train, texts_train, indices_train, data_structured_test, texts_test, indices_test = load_all_data()
-    print("Sizes of training and test data: ", len(data_structured_train),len(texts_train),len(indices_train),
-          len(data_structured_test),len(texts_test),len(indices_test))
-   
+    
+    
