@@ -1,0 +1,168 @@
+Evaluation:
+Round 1:
+
+Abstract 1
+Type 1: P: 18 I: 10 O: 2 
+Type 2: P: 0 I: 9 O: 8 
+Type 3: P: 0 I: 2 O: 0
+Type 4: P: 0 I: 2 O: 0
+Type 5: P: 0 I: 0 O: 0
+Type 6: P: 0 I: 0 O: 0
+Type 7: P: 0 I: 6 O: 4
+Type 8: P: 0 I: 0 O: 9
+Type 9: P: 0 I: 1 O: 2
+Type 10: P: 1 I: 2 O: 2
+Main intervention: Surgical
+Correct spans: 23
+
+Abstract 2
+Type 1: P: 4 I: 10 O: 0
+Type 2: P: 0 I: 0 O: 1
+Type 3: P: 0 I: 0 O: 0
+Type 4: P: 0 I: 0 O: 0
+Type 5: P: 0 I: 0 O: 0
+Type 6: P: 0 I: 0 O: 0
+Type 7: P: 0 I: 1 O: 1
+Type 8: P: 1 I: 0 O: 0
+Type 9: P: 0 I: 0 O: 1
+Type 10: P: 0 I: 7 O: 0
+Main intervention: Drug
+Correct spans: 33
+
+Abstract 3
+Type 1: P: 0 I: 0 O: 5
+Type 2: P: 0 I: 0 O: 0
+Type 3: P: 0 I: 0 O: 0
+Type 4: P: 0 I: 0 O: 0
+Type 5: P: 0 I: 0 O: 0
+Type 6: P: 0 I: 0 O: 0
+Type 7: P: 0 I: 2 O: 0
+Type 8: P: 0 I: 1 O: 1
+Type 9: P: 0 I: 0 O: 0
+Type 10: P: 0 I: 2 O: 0
+Main intervention: Educational
+Correct spans: 43
+ 
+
+Abstract 4
+Type 1: P: 3 I: 13 O: 12
+Type 2: P: 0 I: 3 O: 4
+Type 3: P: 0 I: 0 O: 0
+Type 4: P: 0 I: 0 O: 3
+Type 5: P: 0 I: 0 O: 0
+Type 6: P: 0 I: 0 O: 0
+Type 7: P: 0 I: 1 O: 0
+Type 8: P: 0 I: 0 O: 0
+Type 9: P: 0 I: 0 O: 0
+Type 10: P: 0 I: 0 O: 0
+Main intervention: Psychological
+Correct spans: 3
+ 
+
+
+Abstract 5
+Type 1: P: 0 I: 0 O: 29
+Type 2: P: 0 I: 0 O: 5
+Type 3: P: 0 I: 2 O: 0
+Type 4: P: 0 I: 0 O: 1
+Type 5: P: 0 I: 2 O: 2
+Type 6: P: 0 I: 0 O: 0
+Type 7: P: 0 I: 8 O: 0
+Type 8: P: 0 I: 0 O: 1
+Type 9: P: 0 I: 0 O: 0
+Type 10: P: 0 I: 16 O: 0
+Main intervention: Surgical
+Correct spans: 44
+ 
+
+Abstract 6
+Type 1: P: 7 I: 0 O: 0
+Type 2: P: 1 I: 0 O: 0
+Type 3: P: 0 I: 0 O: 0
+Type 4: P: 0 I: 1 O: 2
+Type 5: P: 0 I: 0 O: 1
+Type 6: P: 4 I: 0 O: 0
+Type 7: P: 0 I: 0 O: 0
+Type 8: P: 3 I: 0 O: 0
+Type 9: P: 0 I: 0 O: 1
+Type 10: P: 5 I: 6 O: 4
+Main intervention: Educational
+Correct spans:  20
+ 
+
+Abstract 7
+Type 1: P: 14 I: 10 O: 19
+Type 2: P: 0 I: 0 O: 0
+Type 3: P: 0 I: 0 O: 0
+Type 4: P: 2 I: 2 O: 0
+Type 5: P: 0 I: 0 O: 0
+Type 6: P: 0 I: 0 O: 0
+Type 7: P: 0 I: 0 O: 0
+Type 8: P: 0 I: 0 O: 9
+Type 9: P: 0 I: 2 O: 0
+Type 10: P: 0 I: 0 O: 0
+Main intervention: Educational
+Correct spans: 21
+ 
+
+Abstract 8
+Type 1: P: 10 I: 14 O: 2
+Type 2: P: 0 I: 10 O: 0
+Type 3: P: 0 I: 1 O: 0
+Type 4: P: 0 I: 0 O: 2
+Type 5: P: 0 I: 0 O: 0
+Type 6: P: 0 I: 0 O: 0
+Type 7: P: 0 I: 6 O: 0
+Type 8: P: 2 I: 0 O: 0
+Type 9: P: 0 I: 0 O: 0
+Type 10: P: 0 I: 0 O: 0
+Main intervention: Other
+Correct spans: 3
+ 
+
+Abstract 9
+Type 1: P: 2 I: 0 O: 10
+Type 2: P: 3 I: 0 O: 0
+Type 3: P: 0 I: 0 O: 0
+Type 4: P: 0 I: 4 O: 0
+Type 5: P: 0 I: 0 O: 0
+Type 6: P: 4 I: 0 O: 0
+Type 7: P: 0 I: 1 O: 0
+Type 8: P: 0 I: 0 O: 0
+Type 9: P: 0 I: 0 O: 0
+Type 10: P: 8 I: 9 O: 7
+Main intervention: Educational
+Correct spans: 20
+ 
+
+Abstract 10
+Type 1: P: 2 I: 15 O: 7
+Type 2: P: 0 I: 0 O: 2
+Type 3: P: 0 I: 0 O: 1
+Type 4: P: 0 I: 0 O: 3
+Type 5: P: 0 I: 0 O: 0
+Type 6: P: 0 I: 5 O: 0
+Type 7: P: 1 I: 0 O: 0
+Type 8: P: 0 I: 0 O: 0
+Type 9: P: 0 I: 0 O: 0
+Type 10: P: 1 I: 11 O: 8
+Main intervention: Psychological
+Correct spans: 10
+ 
+
+Total scores:
+         P   I   O
+Type 1:  60  72  86
+Type 2:  4   22  20
+Type 3:  0   8   5
+Type 4:  2   9   11
+Type 5:  0   2   3
+Type 6:  8   5   0 
+Type 7:  1   25  5
+Type 8:  6   1   20
+Type 9:  0   3   4
+Type 10: 15  63  21
+
+
+
+

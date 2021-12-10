@@ -3,7 +3,7 @@
 ### Repository content
 In this repository you can find... TODO
 ### Used versions:
-
+ python version 3.8
  spaCy version 3.1 (pip install spacy==3.1) + en_core_web_lg pipeline (python -m spacy download en_core_web_lg).  
  numpy version 1.18.5 (pip install numpy==1.18.5).  
  pandas version 1.0.5 (pip install pandas==1.0.5).  
