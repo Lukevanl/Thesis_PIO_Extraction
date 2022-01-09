@@ -57,7 +57,7 @@ def plot_count_elements(elements, hier):
         plt.show()
    
 def data_of_texts():
-    list_of_tokens = np.load('tokens.npy', allow_pickle=True)
+    list_of_tokens = np.load('data/tokens.npy', allow_pickle=True)
     lengths_of_texts = [len(i) for i in list_of_tokens]
     print(F"Average amount of words in texts = {np.mean(lengths_of_texts)}")
     print(F"Maximum amount of words in texts = {np.max(lengths_of_texts)}")
