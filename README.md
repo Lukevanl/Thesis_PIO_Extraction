@@ -8,7 +8,7 @@ In this repository you can find the project decribed in the thesis (*Thesis_v1.p
 - Results of round 1 and round 2 of the error analysis as described in the thesis (read README.md in *error_analysis* folder for more information)
 - Results of exploring the data saturation (*saturation.xlsx*)
 
-To replicate the data saturation numbers simply take the first 20%, 40%, 60%, 80% and 100% of the dataset and run the model with this data on the same config file with just one modification. The only modification is to the eval_frequency hyperparameter inside the config.cfg file which determines after how many iterations the model gets evaluated on the development set. This value was changed with respect to the percentage of the training set to compensate for the decreasing size. So, eval_frequency is 200 for 100% of the training set, 160 for 80% etc.
+To replicate the data saturation numbers simply take the first 20%, 40%, 60%, 80% and 100% of the dataset and run the model with this data on the same config file with just one modification: change the eval_frequency hyperparameter inside the config.cfg file with respect to the percentage of the training set to compensate for the decreasing size. So, eval_frequency is 200 for 100% of the training set, 160 for 80% etc.
 
 ### Dependencies:
  python 3.8. 
