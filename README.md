@@ -8,10 +8,10 @@ In this repository you can find the project decribed in the thesis (*Thesis_v1.p
 - Results of round 1 and round 2 of the error analysis as described in the thesis (read README.md in *error_analysis* folder for more information)
 - Results of exploring the data saturation (*saturation.xlsx*)
 
-To replicate the data saturation numbers simply take the first 20%, 40%, 60%, 80% and 100% of the dataset and run the model with this data on the same config file with just one hyperparameter changed. The only modification is to the eval_frequency hyperparameter which determines after how many iterations the model gets evaluated on the development set. This value was changed with respect to the percentage of the training set to compensate for the decreasing size. So, eval_frequency is 200 for 100% of the training set, 160 for 80% etc.
+To replicate the data saturation numbers simply take the first 20%, 40%, 60%, 80% and 100% of the dataset and run the model with this data on the same config file with just one modification. The only modification is to the eval_frequency hyperparameter inside the config.cfg file which determines after how many iterations the model gets evaluated on the development set. This value was changed with respect to the percentage of the training set to compensate for the decreasing size. So, eval_frequency is 200 for 100% of the training set, 160 for 80% etc.
 
 ### Dependencies:
- python 3.8
+ python 3.8. 
  spaCy version 3.1.3 (pip install spacy==3.1.3) + en_core_web_lg pipeline (python -m spacy download en_core_web_lg).  
  numpy version 1.18.5 (pip install numpy==1.18.5).  
  pandas version 1.0.5 (pip install pandas==1.0.5).  
@@ -47,7 +47,7 @@ To replicate the data saturation numbers simply take the first 20%, 40%, 60%, 80
 ## Replication instructions main model: 
 
 ### 1. Clone the repository
-### 2. Open the command line in the repositories root directory and unzip the 'ebm_nlp_2_00.tar.gz' file so you get the ebm_nlp_2_00 folder in this same directory.
+### 2. Unzip the 'ebm_nlp_2_00.tar.gz' file so you get the ebm_nlp_2_00 folder in the root directory.
 ### 3. Execute the prepare.sh script which prepares the data by running the following files (could take up to a couple minutes depending on your hardware):
   #### loaddata.py:  
   This file first loads all the .tokens files which hold the tokenized texts and all the .txt files which hold the full texts.
