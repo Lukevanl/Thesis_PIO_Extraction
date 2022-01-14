@@ -12,6 +12,7 @@ import os
 os.environ['KMP_DUPLICATE_LIB_OK']='True'
 
 def plot_count_elements(elements, hier):
+    #Get the counts for each element
     fig = plt.figure()
     ax = fig.add_axes([0,0,1,1])
     hier_pico = ['P: Combined', 'I: Combined', 'O: Combined', 'P: Age', 'P: Sex', 'P: Sample size', 
@@ -57,7 +58,7 @@ def plot_count_elements(elements, hier):
         plt.show()
    
 def data_of_texts():
-    list_of_tokens = np.load('data/tokens.npy', allow_pickle=True)
+    list_of_tokens = np.load('tokens.npy', allow_pickle=True)
     lengths_of_texts = [len(i) for i in list_of_tokens]
     print(F"Average amount of words in texts = {np.mean(lengths_of_texts)}")
     print(F"Maximum amount of words in texts = {np.max(lengths_of_texts)}")
@@ -65,8 +66,8 @@ def data_of_texts():
     print(F"Standard deviation of length of words in texts = {np.std(lengths_of_texts)}")
     
            
-#data, texts, indices, _, _, _ = ner.load_data() #Load training date
-_, _, _, data, texts, indices = ner.load_data()#Load test data
+data, texts, indices, _, _, _ = ner.load_data() #Load training date
+#_, _, _, data, texts, indices = ner.load_data()#Load test data
 pio_values = [[x[0] for x in X] for X in data]
 plot_count_elements(pio_values, True)
 data_of_texts()

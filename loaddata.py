@@ -3,6 +3,9 @@
 Created on Wed Sep 15 09:44:15 2021
 
 @author: lukev
+#================================#
+# Load and merge individual data #
+#================================#
 """
 
 import os
@@ -25,12 +28,12 @@ def read_documents(directory, file_format):
     for file in os.listdir(directory): #Loop through all the files in directory
         filename = os.fsdecode(file)
         if(file_format in filename):
-            if (file_format == '.tokens'):
-                with open(directory + filename, encoding='utf-8') as file: #.tokens file containing tokens 
+            if (file_format == '.tokens'): #.tokens file containing the tokenized text
+                with open(directory + filename, encoding='utf-8') as file:  
                     values = file.readlines()
                     values = [i.strip() for i in values if i != '\n'] #Remove newlines
-                    docs.append([filename,values])
-            elif (file_format == '.txt'):
+                    docs.append([filename,values]) #Save tokens together with filename
+            elif (file_format == '.txt'):#.txt file containing full text 
                 with open(directory + filename, encoding='utf-8') as file:
                     values = file.read()
                     values = values.strip()
@@ -43,21 +46,23 @@ def read_annotations(path):
     keys = list()
     for file in os.listdir(path): #Loop through all the files in directory
          filename = os.fsdecode(file)
-         with open(path + filename) as file: #.ann file containing annotations 
+         with open(path + filename) as file: #open .ann file containing annotations 
              values = file.readlines()
-             values = [int(i) for i in values] #Convert string to the int value that it contains
-             annotations.append(values)
-             keys.append(filename)
+             values = [int(i) for i in values] #Convert string to the int value of the annotation
+             annotations.append(values) #Add annotation value
+             keys.append(filename) #Add filename
     return keys, annotations
 
 def convert_annotations(intv, outc):
+    #Convert values of PIO annotations to make the classes
+    #exclusive so that we can combine them
     interventions = list()
     outcomes = list()
     for i in range(len(intv)):
-        labels = [i if i == 0 else i+4 for i in intv[i]]
+        labels = [i if i == 0 else i+4 for i in intv[i]] #There are 4 P classes
         interventions.append(labels)
     for i in range(len(outc)):
-        labels = [i if i == 0 else i+11 for i in outc[i]]
+        labels = [i if i == 0 else i+11 for i in outc[i]] # 4 + 7 Intervention classes
         outcomes.append(labels)
     return interventions, outcomes
 
@@ -77,13 +82,14 @@ def merge_annotations(arr1, keys1, arr2, keys2, arr3, keys3):
     return merged_annotations      
         
 def save_files():
+    #Read train and test data
     keys_intv_train, intv_train = read_annotations(filepath_intv_train)
     keys_outc_train, outc_train = read_annotations(filepath_outc_train)
     keys_part_train, part_train = read_annotations(filepath_part_train)
     keys_intv_test, intv_test = read_annotations(filepath_intv_test)
     keys_outc_test, outc_test = read_annotations(filepath_outc_test)
     keys_part_test, part_test = read_annotations(filepath_part_test)
-    #print(len(intv_train), len(outc_train), len(part_train))
+    #Combine individual PIO annotations into single annotation file
     merged_train = merge_annotations(intv_train, keys_intv_train,
                                outc_train, keys_outc_train, part_train,
                                keys_part_train)
@@ -98,12 +104,14 @@ def save_files():
         np.save(file, np.asarray(merged_ann_test))
     keys_merged_train = [i[0] for i in merged_train]
     keys_merged_test = [i[0] for i in merged_test]
+    #Read tokens and full texts
     tokens = read_documents(DOC_DIR, ".tokens")
     text = read_documents(DOC_DIR, ".txt")
     with open('full_texts.npy', 'wb') as file:
         np.save(file, text) #Save full texts
     keys_tokens = [i[0] for i in tokens]
     tokens = [i[1] for i in tokens]
+    #Save leftover files
     with open('keys_merged_ann.npy', 'wb') as file:
         np.save(file, keys_merged_train) #Save keys of annotations
     with open('keys_merged_ann_test.npy', 'wb') as file:
@@ -116,4 +124,4 @@ def save_files():
 if __name__ == '__main__':
     print("Loading data...")
     save_files()
-    print("Done with loading")
+    print("Done with loading data")

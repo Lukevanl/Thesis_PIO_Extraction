@@ -3,6 +3,9 @@
 Created on Thu Sep 23 08:45:09 2021
 
 @author: lukev
+#==========================================#
+# Transform data to simplify further steps #
+#==========================================#
 """
 
 import numpy as np
@@ -10,7 +13,7 @@ import re
 from loaddata import save_files
 
 
-def strip_keys():#Strips the text of the keys and only preserves the numerical ID
+def strip_keys():#Strips the text of the keys and only preserves the numerical ID of each file
     merged_ann_keys_train = np.load('keys_merged_ann.npy', allow_pickle=True)
     merged_ann_keys_train = [int(re.search(r'\d+', key).group()) for key in merged_ann_keys_train]
     merged_ann_keys_test = np.load('keys_merged_ann_test.npy', allow_pickle=True)
@@ -26,7 +29,8 @@ def load_data():
     texts = np.load('full_texts.npy', allow_pickle=True)
     return annotations_train, annotations_test, tokens, texts
 
-def merge_with_keys(arr, keys): #Makes a tuple of the text and keys
+def merge_with_keys(arr, keys): 
+    #Makes a tuple of the text and keys to simplify handling the data
     arr_with_keys = list()
     for i in range(len(arr)):
         arr_with_keys.append((keys[i], arr[i]))
@@ -34,6 +38,7 @@ def merge_with_keys(arr, keys): #Makes a tuple of the text and keys
     
 
 def match_tokens_with_annotations(annotations, tokens, keys_annotations, keys_tokens):
+    #Make a tuple of all the tokens and annotations that belong together
     tupled = list() #Holds all matching documents and tokens in a tuple
     matched = list() #Final array
     for i in range(len(annotations)):
@@ -42,18 +47,17 @@ def match_tokens_with_annotations(annotations, tokens, keys_annotations, keys_to
             index = keys_tokens.index(keys_annotations[i])
             tupled.append((annotations[i], tokens[index]))
         except ValueError: 
-            #No matching index
+            #No matching index so gets skipped
             continue
-    #print(tupled[0])
     for i in range(len(tupled)):
         tuples = list() #Holds the tuples of all tokens of one document
         for j in range(len(tupled[i][0])):
             tuples.append((tupled[i][0][j], tupled[i][1][j])) 
         matched.append(tuples) # Add tuples of one document
-   # print(matched)
     return matched #Return all tuples of all tokens of all documents
 
 def match_texts_with_annotations(texts, annotations, keys_annotations):
+    #Match each full text with the annotations for each text
     text_list = list()
     keys = [int(re.search(r'\d+', key[0]).group()) for key in texts]
     for i in range(len(annotations)):
@@ -61,25 +65,26 @@ def match_texts_with_annotations(texts, annotations, keys_annotations):
             index = keys.index(keys_annotations[i])
             text_list.append(texts[index])
         except ValueError: 
-            #No matching index
+            #No matching index so gets skipped
             continue
     return text_list
     
 def map_numerical_label_to_string(xtrain):
+    #Uncomment this and comment next targetlabel if you want non-hierarchical labels
+    # =============================================================================
+    targetlabel = {0: 'None', 1: 'Population', 2: 'Population', 3: 'Population', 
+                    4: 'Population', 5: 'Intervention', 6: 'Intervention', 
+                    7: 'Intervention', 8: 'Intervention', 9: 'Intervention', 
+                    10: 'Intervention', 11: 'Intervention', 12: 'Outcome', 13: 'Outcome',                     14: 'Outcome', 15: 'Outcome', 16: 'Outcome',
+                    17: 'Outcome'} #Maps labels to regular PICO elements
 # =============================================================================
-#     targetlabel = {0: 'None', 1: 'Population', 2: 'Population', 3: 'Population', 
-#                    4: 'Population', 5: 'Intervention', 6: 'Intervention', 
-#                    7: 'Intervention', 8: 'Intervention', 9: 'Intervention', 
-#                    10: 'Intervention', 11: 'Intervention', 12: 'Outcome', 13: 'Outcome', 
-#                    14: 'Outcome', 15: 'Outcome', 16: 'Outcome',
-#                    17: 'Outcome'} #Maps labels to regular PICO elements
-# =============================================================================
+    #Maps label to hierarchical PICO elements
     targetlabel = {0: 'None', 1: 'P: Age', 2: 'P: Sex', 3: 'P: Sample size', 
                     4: 'P: Condition', 5: 'I: Surgical', 6: 'I: Physical', 
                     7: 'I: Drug', 8: 'I: Educational', 9: 'I: Psychological', 
                     10: 'I: Other', 11: 'I: Control', 12: 'O: Physical', 13: 'O: Pain', 
                     14: 'O: Mortality', 15: 'O: Adverse effects', 16: 'O: Mental',
-                    17: 'O: Other'} #Maps label to hierarchical PICO elements"""
+                    17: 'O: Other'} 
 
     names_list = list() #Contains the names and tokens of all documents
     for i in range(len(xtrain)):
@@ -90,6 +95,7 @@ def map_numerical_label_to_string(xtrain):
     return names_list
  
 def get_indices(data, full_texts):
+    #Transform the tokens into the index of the characters of the token (required for spacy)
     tokens = [[x[1] for x in X] for X in data]
     labels = [[x[0] for x in X] for X in data]
     list_indices = list()
@@ -106,7 +112,9 @@ def get_indices(data, full_texts):
     
     
 def load_all_data():
+    #Loads the data
     save_files()
+    #Transform data
     keys_ann_train, keys_ann_test, keys_tok = strip_keys() #Get keys
     ann_train, ann_test, tok, texts = load_data() #Get annotations and tokens
     texts_train = match_texts_with_annotations(texts, ann_train, keys_ann_train)
@@ -117,7 +125,7 @@ def load_all_data():
     data_standard_test = match_tokens_with_annotations(ann_test, tok, keys_ann_test, keys_tok) #Tuple annotations and tokens
     data_standard_test = map_numerical_label_to_string(data_standard_test)
     indices_test = get_indices(data_standard_test, texts_test)
-   # print(data_standard[0])
+   # Save transformed data
     with open('data/data_standard.npy', 'wb') as file:
         np.save(file, data_standard_train)
     with open('data/full_texts.npy', 'wb') as file:
