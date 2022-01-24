@@ -1,7 +1,7 @@
 ## Thesis PIO element extraction on RCT studies
 
 ### Repository content
-In this repository you can find the project decribed in the thesis (*Thesis_v1.pdf*). We provide the following information:
+In this repository you can find the project described in the thesis (*Thesis_v1.pdf*). We provide the following information:
 - Replication instructions for the model described in the thesis (see replication instructions below)
 - Code with which the scores for the naive baseline was calculated (*naivebaseline.py*)
 - Brief EDA on the dataset and the counts of each element in the training set (*eda.py* and *picocounts.xlsx*)

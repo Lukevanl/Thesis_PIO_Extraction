@@ -4,7 +4,7 @@ Created on Tue Oct  5 10:15:46 2021
 
 @author: lukev
 """
-import ner_pico as ner
+import to_spacy_format as spacy
 import matplotlib.pyplot as plt
 import numpy as np
 import os
@@ -66,7 +66,7 @@ def data_of_texts():
     print(F"Standard deviation of length of words in texts = {np.std(lengths_of_texts)}")
     
            
-data, texts, indices, _, _, _ = ner.load_data() #Load training date
+data, texts, indices, _, _, _ = spacy.load_data() #Load training date
 #_, _, _, data, texts, indices = ner.load_data()#Load test data
 pio_values = [[x[0] for x in X] for X in data]
 plot_count_elements(pio_values, True)
