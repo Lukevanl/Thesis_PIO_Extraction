@@ -11,7 +11,7 @@ In this repository you can find the project described in the thesis (*Thesis_v1.
 To replicate the data saturation numbers simply take the first 20%, 40%, 60%, 80% and 100% of the dataset and run the model with this data on the same config file with just one modification: change the eval_frequency hyperparameter inside the config.cfg file with respect to the percentage of the training set to compensate for the decreasing size. So, eval_frequency is 200 for 100% of the training set, 160 for 80% etc.
 
 ### Dependencies:
- python 3.8. 
+ python 3.8.  
  spaCy version 3.1.3 (pip install spacy==3.1.3) + en_core_web_lg pipeline (python -m spacy download en_core_web_lg).  
  numpy version 1.18.5 (pip install numpy==1.18.5).  
  pandas version 1.0.5 (pip install pandas==1.0.5).  
